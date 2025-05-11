@@ -1,24 +1,22 @@
 package view;
 
-import controller.ControladorQS;
-import model.*;
+import controller.BubbleSortController;
+
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Ventana para ordenar con QuickSort y mostrar métricas.
- */
-public class VentanaQS extends JFrame {
+public class VentanaBubbleSort extends JFrame {
     private JTextField tfTama;
     private JTextArea taResultados;
     private JButton btnEjecutar;
 
-    public VentanaQS() {
-        super("Ordenamiento QuickSort");
+    public VentanaBubbleSort() {
+        super("Ordenamiento BubbleSort");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(600, 400);
         setLayout(new BorderLayout());
 
+        // Panel superior: entrada
         JPanel pnlEntrada = new JPanel();
         pnlEntrada.add(new JLabel("Número de políticos:"));
         tfTama = new JTextField(5);
@@ -27,14 +25,16 @@ public class VentanaQS extends JFrame {
         pnlEntrada.add(btnEjecutar);
         add(pnlEntrada, BorderLayout.NORTH);
 
+        // Área de resultados
         taResultados = new JTextArea();
         taResultados.setEditable(false);
         add(new JScrollPane(taResultados), BorderLayout.CENTER);
 
+        // Acción
         btnEjecutar.addActionListener(e -> {
             int n = Integer.parseInt(tfTama.getText());
             taResultados.setText("");
-            ControladorQS controlador = new ControladorQS(this);
+            BubbleSortController controlador = new BubbleSortController(this);
             controlador.ejecutar(n);
         });
     }

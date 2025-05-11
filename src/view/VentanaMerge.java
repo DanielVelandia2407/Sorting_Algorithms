@@ -43,4 +43,8 @@ public class VentanaMerge extends JFrame {
     public void mostrarResultados(String texto) {
         taResultados.append(texto + "\n");
     }
+
+    public void mostrarArrayOrdenado(String arrayTexto) {
+        taResultados.append("Array ordenado: " + arrayTexto + "\n");
+    }
 }

@@ -1,7 +1,7 @@
 package controller;
 
-import model.Politico;
-import modelo.*;
+import model.*;
+import model.estructuras.*;
 import view.VentanaQS;
 
 public class ControladorQS {

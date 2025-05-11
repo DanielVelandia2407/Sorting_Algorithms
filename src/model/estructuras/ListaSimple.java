@@ -1,4 +1,5 @@
-package modelo.estructuras;
+package model.estructuras;
+
 
 public class ListaSimple<T> implements Lista<T> {
     private class Nodo {

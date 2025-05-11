@@ -1,19 +1,17 @@
-package model;
+package model.estructuras;
 
-public class ListaDoble<T> implements Lista<T> {
+public class ListaCircularSimple<T> implements Lista<T> {
     private class Nodo {
         T dato;
         Nodo siguiente;
-        Nodo anterior;
         Nodo(T dato) { this.dato = dato; }
     }
 
     private Nodo cabeza;
-    private Nodo cola;
     private int tama;
 
-    public ListaDoble() {
-        cabeza = cola = null;
+    public ListaCircularSimple() {
+        cabeza = null;
         tama = 0;
     }
 
@@ -21,11 +19,15 @@ public class ListaDoble<T> implements Lista<T> {
     public void add(T dato) {
         Nodo nuevo = new Nodo(dato);
         if (cabeza == null) {
-            cabeza = cola = nuevo;
+            cabeza = nuevo;
+            nuevo.siguiente = cabeza;
         } else {
-            cola.siguiente = nuevo;
-            nuevo.anterior = cola;
-            cola = nuevo;
+            Nodo temp = cabeza;
+            while (temp.siguiente != cabeza) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevo;
+            nuevo.siguiente = cabeza;
         }
         tama++;
     }
@@ -40,14 +42,8 @@ public class ListaDoble<T> implements Lista<T> {
         if (indice < 0 || indice >= tama) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + indice);
         }
-        Nodo temp;
-        if (indice < tama / 2) {
-            temp = cabeza;
-            for (int i = 0; i < indice; i++) temp = temp.siguiente;
-        } else {
-            temp = cola;
-            for (int i = tama - 1; i > indice; i--) temp = temp.anterior;
-        }
+        Nodo temp = cabeza;
+        for (int i = 0; i < indice; i++) temp = temp.siguiente;
         return temp.dato;
     }
 
@@ -56,20 +52,14 @@ public class ListaDoble<T> implements Lista<T> {
         if (indice < 0 || indice >= tama) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + indice);
         }
-        Nodo temp;
-        if (indice < tama / 2) {
-            temp = cabeza;
-            for (int i = 0; i < indice; i++) temp = temp.siguiente;
-        } else {
-            temp = cola;
-            for (int i = tama - 1; i > indice; i--) temp = temp.anterior;
-        }
+        Nodo temp = cabeza;
+        for (int i = 0; i < indice; i++) temp = temp.siguiente;
         temp.dato = dato;
     }
 
     @Override
     public void clear() {
-        cabeza = cola = null;
+        cabeza = null;
         tama = 0;
     }
 }
