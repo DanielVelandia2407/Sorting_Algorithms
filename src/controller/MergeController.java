@@ -1,7 +1,6 @@
 package controller;
 
-import model.Politico;
-import model.algoritmos.MergeSort;
+import model.*;
 import model.estructuras.*;
 import view.VentanaMerge;
 

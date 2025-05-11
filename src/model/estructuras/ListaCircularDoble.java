@@ -1,4 +1,4 @@
-package model;
+package model.estructuras;
 
 public class ListaCircularDoble<T> implements Lista<T> {
     private class Nodo {

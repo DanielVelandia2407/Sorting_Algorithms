@@ -1,4 +1,4 @@
-package model;
+package model.estructuras;
 
 public interface Lista<T> {
     void add(T dato);

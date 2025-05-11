@@ -1,6 +1,6 @@
 package model;
 
-import model.Lista;
+import model.estructuras.*;
 import java.util.ArrayList;
 import java.util.List;
 
