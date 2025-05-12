@@ -1,90 +1,93 @@
 package controller;
 
 import view.MainView;
-import view.AlgorithmMenuView;
-import view.SequentialSearchView;
-import view.BinarySearchView;
-import view.HashAlgorithmView;
-import view.TreeView;
+import view.InsertionMenu;
+import view.SelectionMenu;
+import view.VentanaQS;
+import view.VentanaBubbleSort;
+import view.VentanaMerge;
+
+import javax.swing.JButton;
+import java.awt.BorderLayout;
 
 public class MainController {
     private MainView mainView;
-    private AlgorithmMenuView algorithmMenuView;
-    private TreeView treeView;
 
     public MainController(MainView view) {
         this.mainView = view;
-        this.algorithmMenuView = new AlgorithmMenuView();
-        this.treeView = new TreeView();
 
-        // MainView -> AlgorithmMenuView
-        this.mainView.addInternalSearchListener(e -> {
-            mainView.setVisible(false);
-            algorithmMenuView.setVisible(true);
-        });
-
-        // AlgorithmMenuView -> MainView
-        this.algorithmMenuView.addBackListener(e -> {
-            algorithmMenuView.setVisible(false);
-            mainView.setVisible(true);
-        });
-
-        // AlgorithmMenuView -> TreeView
-        this.mainView.addTreeSearchListener(e -> {
-            mainView.setVisible(false);
-            treeView = new TreeView();
-            TreeController treeController = new TreeController(treeView);
-            treeController.setMainView(mainView);
-            treeView.showWindow();
-        });
-
-        // AlgorithmMenuView -> SequentialSearchView
-        this.algorithmMenuView.addSequentialSearchListener(e -> openSequentialSearch());
-
-        // AlgorithmMenuView -> BinarySearchView
-        this.algorithmMenuView.addBinarySearchListener(e -> openBinarySearch());
-
-        // AlgorithmMenuView -> HashAlgorithmView
-        this.algorithmMenuView.addHashSearchListener(e -> openHashAlgorithmView());
+        // Listeners para Sorting
+        this.mainView.addBubbleSortListener(e -> openBubbleSortView());
+        this.mainView.addQuickSortListener(e -> openQuickSortView());
+        this.mainView.addMergeSortListener(e -> openMergeSortView()); // Añadimos el listener para MergeSort
+        this.mainView.addInsertionSortListener(e -> openInsertionView());
+        this.mainView.addSelectionSortListener(e -> openSelectionView());
     }
 
-    // Extracted method to open SequentialSearch view
-    private void openSequentialSearch() {
-        algorithmMenuView.setVisible(false);
-        SequentialSearchView sequentialSearchView = new SequentialSearchView();
-        SequentialSearchController controller = new SequentialSearchController(sequentialSearchView);
-        controller.setAlgorithmMenuView(algorithmMenuView);
+    // Method to show BubbleSort view
+    private void openBubbleSortView() {
+        mainView.setVisible(false);
+        VentanaBubbleSort bubbleSortMenu = new VentanaBubbleSort();
+        BubbleSortController controller = new BubbleSortController(bubbleSortMenu);
+        controller.setMainView(mainView);
 
-        sequentialSearchView.showWindow();
+        // Agregar botón para volver al menú principal
+        JButton btnVolver = new JButton("Volver al Menú Principal");
+        btnVolver.addActionListener(e -> controller.volverAlMenu());
+        bubbleSortMenu.add(btnVolver, BorderLayout.SOUTH);
+
+        bubbleSortMenu.setVisible(true);
     }
 
-    // Extracted method to open BinarySearch view
-    private void openBinarySearch() {
-        algorithmMenuView.setVisible(false);
-        BinarySearchView binarySearchView = new BinarySearchView();
-        BinarySearchController controller = new BinarySearchController(binarySearchView);
-        controller.setAlgorithmMenuView(algorithmMenuView);
+    // Method to show QuickSort view
+    private void openQuickSortView() {
+        mainView.setVisible(false);
+        VentanaQS quickSortMenu = new VentanaQS();
+        ControladorQS controller = new ControladorQS(quickSortMenu);
+        controller.setMainView(mainView);
 
-        binarySearchView.showWindow();
+        // Agregar botón para volver al menú principal
+        JButton btnVolver = new JButton("Volver al Menú Principal");
+        btnVolver.addActionListener(e -> controller.volverAlMenu());
+        quickSortMenu.add(btnVolver, BorderLayout.SOUTH);
+
+        quickSortMenu.setVisible(true);
     }
 
-    // Method to show the Hash view
-    private void openHashAlgorithmView() {
-        algorithmMenuView.setVisible(false);
-        HashAlgorithmView hashAlgorithmView = new HashAlgorithmView();
-        HashAlgorithmController controller = new HashAlgorithmController(hashAlgorithmView);
-        controller.setAlgorithmMenuView(algorithmMenuView);
+    // Method to show MergeSort view
+    private void openMergeSortView() {
+        mainView.setVisible(false);
+        VentanaMerge mergeSortMenu = new VentanaMerge();
+        MergeController controller = new MergeController(mergeSortMenu);
+        controller.setMainView(mainView);
 
-        hashAlgorithmView.showWindow();
+        // Agregar botón para volver al menú principal
+        JButton btnVolver = new JButton("Volver al Menú Principal");
+        btnVolver.addActionListener(e -> controller.volverAlMenu());
+        mergeSortMenu.add(btnVolver, BorderLayout.SOUTH);
+
+        mergeSortMenu.setVisible(true);
     }
 
-    // Method to show the Tree view
-    private void openTreeView() {
-        algorithmMenuView.setVisible(false);
-        treeView = new TreeView();
-        treeView.showWindow();
+    // Method to show Insertion view
+    private void openInsertionView() {
+        mainView.setVisible(false);
+        InsertionMenu insertionMenu = new InsertionMenu();
+        InsertionMenuController controller = new InsertionMenuController(insertionMenu);
+        controller.setMainView(mainView);
+
+        insertionMenu.showWindow();
     }
 
+    // Method to show Selection view
+    private void openSelectionView() {
+        mainView.setVisible(false);
+        SelectionMenu selectionMenu = new SelectionMenu();
+        SelectionMenuController controller = new SelectionMenuController(selectionMenu);
+        controller.setMainView(mainView);
+
+        selectionMenu.showWindow();
+    }
 
     // Main method for demonstration
     public static void main(String[] args) {

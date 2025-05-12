@@ -1,7 +1,7 @@
 package view;
 
 import controller.ControladorQS;
-import model.*;
+import model.estructuras.*;
 import javax.swing.*;
 import java.awt.*;
 

@@ -2,23 +2,30 @@ package controller;
 
 import model.estructuras.*;
 import view.VentanaBubbleSort;
+import view.MainView;
 
 import java.util.Random;
 
 public class BubbleSortController {
 
     private final VentanaBubbleSort ventana;
+    private MainView mainView;
 
     public BubbleSortController(VentanaBubbleSort ventana) {
         this.ventana = ventana;
     }
 
+    // Método para establecer la referencia a la vista principal
+    public void setMainView(MainView mainView) {
+        this.mainView = mainView;
+    }
+
     public void ejecutar(int n) {
         Lista<Integer>[] listas = new Lista[] {
-            new ListaSimple<>(),
-            new ListaDoble<>(),
-            new ListaCircularSimple<>(),
-            new ListaCircularDoble<>()
+                new ListaSimple<>(),
+                new ListaDoble<>(),
+                new ListaCircularSimple<>(),
+                new ListaCircularDoble<>()
         };
         String[] tipos = {"Simple", "Doble", "Circular Simple", "Circular Doble"};
 
@@ -55,5 +62,13 @@ public class BubbleSortController {
             }
         }
         return new int[] {comparisons, swaps};
+    }
+
+    // Método para volver al menú principal
+    public void volverAlMenu() {
+        ventana.dispose();
+        if (mainView != null) {
+            mainView.setVisible(true);
+        }
     }
 }
