@@ -1,47 +1,40 @@
-# Search Algorithms
+# Sorting Algorithms
 
-A comprehensive Java application that demonstrates various search algorithms and data structures through an interactive GUI. This educational tool allows users to explore and visualize different search techniques including sequential search, binary search, hash-based methods, and tree-based structures.
+A comprehensive Java application that demonstrates various sorting algorithms through an interactive GUI. This educational tool allows users to explore and visualize different sorting techniques including Bubble Sort, Quick Sort, Merge Sort, Insertion Sort, and Selection Sort.
 
 ## Features
 
-This application implements the following search algorithms and data structures:
+This application implements the following sorting algorithms:
 
-### Internal Search Algorithms
-- **Sequential Search**: A simple linear search algorithm that checks each element in a list until it finds a match.
-- **Binary Search**: An efficient search algorithm that works on sorted arrays by repeatedly dividing the search interval in half.
-
-### Hash Functions
-- **Modulo Function**: Uses the remainder of division to map keys to hash table indices.
-- **Square Function**: Squares the key and extracts the middle digits for hash table indexing.
-- **Truncation Function**: Removes parts of the key and uses the remaining portion for indexing.
-- **Folding Function**: Divides the key into parts, combines them, and uses the result for indexing.
-
-### Search Trees
-- **Digital Tree**: A tree data structure where each node's position is determined by the digits/bits of the key.
-- **Residue Tree**: A tree structure that organizes data based on the remainder when divided by a specific value.
-- **Multiple Residue Tree**: An extension of the residue tree that uses multiple divisors.
-- **Huffman Tree**: A tree used for data compression, where frequently occurring characters have shorter codes.
+### Sorting Algorithms
+- **Bubble Sort**: A simple comparison-based algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+- **Quick Sort**: An efficient divide-and-conquer sorting algorithm that works by selecting a 'pivot' element and partitioning the array around the pivot.
+- **Merge Sort**: A divide-and-conquer algorithm that divides the input array into two halves, recursively sorts them, and then merges the sorted halves.
+- **Insertion Sort**: A simple sorting algorithm that builds the final sorted array one item at a time, similar to how people sort playing cards.
+- **Selection Sort**: A simple comparison-based algorithm that divides the input list into a sorted and an unsorted region, and repeatedly selects the smallest element from the unsorted region and moves it to the sorted region.
 
 ## Project Structure
 
 The project follows the Model-View-Controller (MVC) architecture pattern:
 
 - **Model**: Contains the data structures and algorithms implementation.
-  - `DigitalTreeModel.java`
-  - `HuffmanTreeModel.java`
-  - `MultipleResidueTreeModel.java`
-  - `ResidueHashModel.java`
+  - Various algorithm-specific models for implementing the sorting logic.
 
 - **View**: Contains the GUI components.
-  - `MainView.java`: The main application window.
-  - `AlgorithmMenuView.java`: Menu for selecting internal search algorithms.
-  - `HashAlgorithmView.java`: Menu for selecting hash functions.
-  - `TreeView.java`: Menu for selecting tree-based algorithms.
-  - Various algorithm-specific views (e.g., `BinarySearchView.java`, `SequentialSearchView.java`, etc.)
+  - `MainView.java`: The main application window with buttons for each sorting algorithm.
+  - `VentanaBubbleSort.java`: View for Bubble Sort visualization.
+  - `VentanaQS.java`: View for Quick Sort visualization.
+  - `VentanaMerge.java`: View for Merge Sort visualization.
+  - `InsertionMenu.java`: View for Insertion Sort visualization.
+  - `SelectionMenu.java`: View for Selection Sort visualization.
 
 - **Controller**: Contains the logic that connects the models and views.
   - `MainController.java`: Manages navigation between main views.
-  - Various algorithm-specific controllers (e.g., `BinarySearchController.java`, `SequentialSearchController.java`, etc.)
+  - `BubbleSortController.java`: Controller for Bubble Sort.
+  - `ControladorQS.java`: Controller for Quick Sort.
+  - `MergeController.java`: Controller for Merge Sort.
+  - `InsertionMenuController.java`: Controller for Insertion Sort.
+  - `SelectionMenuController.java`: Controller for Selection Sort.
 
 - **Utilities**: Contains data files used for testing and demonstrating the algorithms.
 
@@ -60,18 +53,20 @@ The project follows the Model-View-Controller (MVC) architecture pattern:
 Alternatively, you can run the compiled JAR file (if available) using:
 
 ```
-java -jar search_algorithms.jar
+java -jar sorting_algorithms.jar
 ```
 
 ## Usage
 
 1. Launch the application.
-2. From the main menu, select one of the three main categories:
-   - **Búsqueda Interna** (Internal Search)
-   - **Búsqueda Externa** (External Search)
-   - **Árboles de Búsqueda** (Search Trees)
-3. Select a specific algorithm from the submenu.
-4. Follow the on-screen instructions to interact with the selected algorithm.
+2. From the main menu, select one of the five sorting algorithms:
+   - **Bubble Sort**
+   - **Quick Sort**
+   - **Merge Sort**
+   - **Insertion Sort**
+   - **Selection Sort**
+3. Follow the on-screen instructions to interact with the selected algorithm visualization.
+4. Use the "Volver al Menú Principal" (Return to Main Menu) button to go back to the main menu.
 
 ## Author
 
